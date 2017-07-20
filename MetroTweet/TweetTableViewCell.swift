@@ -10,6 +10,10 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var metroID: UIImageView!
+    @IBOutlet weak var createdAt: UILabel!
+    @IBOutlet weak var tweet: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
