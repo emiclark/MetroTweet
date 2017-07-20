@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0046AF7B1F2148D500CCC39A /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0046AF791F2148D500CCC39A /* TweetTableViewCell.swift */; };
+		0046AF7C1F2148D500CCC39A /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0046AF7A1F2148D500CCC39A /* TweetTableViewCell.xib */; };
+		F9F36BF91F212F9400BCC800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F36BF81F212F9400BCC800 /* AppDelegate.swift */; };
+		F9F36BFB1F212F9400BCC800 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F36BFA1F212F9400BCC800 /* ViewController.swift */; };
+		F9F36BFE1F212F9400BCC800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9F36BFC1F212F9400BCC800 /* Main.storyboard */; };
+		F9F36C031F212F9400BCC800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9F36C021F212F9400BCC800 /* Assets.xcassets */; };
+		F9F36C061F212F9400BCC800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9F36C041F212F9400BCC800 /* LaunchScreen.storyboard */; };
+		F9F36C0F1F213C3500BCC800 /* LineWebDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F36C0D1F213C3500BCC800 /* LineWebDataViewController.swift */; };
+		F9F36C101F213C3500BCC800 /* LineWebDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F36C0E1F213C3500BCC800 /* LineWebDataViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0046AF791F2148D500CCC39A /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		0046AF7A1F2148D500CCC39A /* TweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
+		F9F36BF51F212F9400BCC800 /* MetroTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9F36BF81F212F9400BCC800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F9F36BFA1F212F9400BCC800 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9F36BFD1F212F9400BCC800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F9F36C021F212F9400BCC800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9F36C051F212F9400BCC800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F9F36C071F212F9400BCC800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9F36C0D1F213C3500BCC800 /* LineWebDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineWebDataViewController.swift; sourceTree = "<group>"; };
+		F9F36C0E1F213C3500BCC800 /* LineWebDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineWebDataViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F9F36BF21F212F9400BCC800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F9F36BEC1F212F9400BCC800 = {
+			isa = PBXGroup;
+			children = (
+				F9F36BF71F212F9400BCC800 /* MetroTweet */,
+				F9F36BF61F212F9400BCC800 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9F36BF61F212F9400BCC800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9F36BF51F212F9400BCC800 /* MetroTweet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9F36BF71F212F9400BCC800 /* MetroTweet */ = {
+			isa = PBXGroup;
+			children = (
+				F9F36BF81F212F9400BCC800 /* AppDelegate.swift */,
+				F9F36BFA1F212F9400BCC800 /* ViewController.swift */,
+				F9F36BFC1F212F9400BCC800 /* Main.storyboard */,
+				0046AF791F2148D500CCC39A /* TweetTableViewCell.swift */,
+				0046AF7A1F2148D500CCC39A /* TweetTableViewCell.xib */,
+				F9F36C0D1F213C3500BCC800 /* LineWebDataViewController.swift */,
+				F9F36C0E1F213C3500BCC800 /* LineWebDataViewController.xib */,
+				F9F36C021F212F9400BCC800 /* Assets.xcassets */,
+				F9F36C041F212F9400BCC800 /* LaunchScreen.storyboard */,
+				F9F36C071F212F9400BCC800 /* Info.plist */,
+			);
+			path = MetroTweet;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F9F36BF41F212F9400BCC800 /* MetroTweet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9F36C0A1F212F9400BCC800 /* Build configuration list for PBXNativeTarget "MetroTweet" */;
+			buildPhases = (
+				F9F36BF11F212F9400BCC800 /* Sources */,
+				F9F36BF21F212F9400BCC800 /* Frameworks */,
+				F9F36BF31F212F9400BCC800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MetroTweet;
+			productName = MetroTweet;
+			productReference = F9F36BF51F212F9400BCC800 /* MetroTweet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9F36BED1F212F9400BCC800 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Avery Barrantes";
+				TargetAttributes = {
+					F9F36BF41F212F9400BCC800 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F9F36BF01F212F9400BCC800 /* Build configuration list for PBXProject "MetroTweet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F9F36BEC1F212F9400BCC800;
+			productRefGroup = F9F36BF61F212F9400BCC800 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9F36BF41F212F9400BCC800 /* MetroTweet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F9F36BF31F212F9400BCC800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0046AF7C1F2148D500CCC39A /* TweetTableViewCell.xib in Resources */,
+				F9F36C061F212F9400BCC800 /* LaunchScreen.storyboard in Resources */,
+				F9F36C101F213C3500BCC800 /* LineWebDataViewController.xib in Resources */,
+				F9F36C031F212F9400BCC800 /* Assets.xcassets in Resources */,
+				F9F36BFE1F212F9400BCC800 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F9F36BF11F212F9400BCC800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9F36BFB1F212F9400BCC800 /* ViewController.swift in Sources */,
+				F9F36C0F1F213C3500BCC800 /* LineWebDataViewController.swift in Sources */,
+				0046AF7B1F2148D500CCC39A /* TweetTableViewCell.swift in Sources */,
+				F9F36BF91F212F9400BCC800 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F9F36BFC1F212F9400BCC800 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9F36BFD1F212F9400BCC800 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F9F36C041F212F9400BCC800 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9F36C051F212F9400BCC800 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F9F36C081F212F9400BCC800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9F36C091F212F9400BCC800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9F36C0B1F212F9400BCC800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MetroTweet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ninjaShark.MetroTweet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F9F36C0C1F212F9400BCC800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MetroTweet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ninjaShark.MetroTweet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F9F36BF01F212F9400BCC800 /* Build configuration list for PBXProject "MetroTweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9F36C081F212F9400BCC800 /* Debug */,
+				F9F36C091F212F9400BCC800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9F36C0A1F212F9400BCC800 /* Build configuration list for PBXNativeTarget "MetroTweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9F36C0B1F212F9400BCC800 /* Debug */,
+				F9F36C0C1F212F9400BCC800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9F36BED1F212F9400BCC800 /* Project object */;
+}
