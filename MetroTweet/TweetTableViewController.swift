@@ -102,8 +102,9 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func UpdateButtonTapped(_ sender: UIButton) {
-    }
+//    func UpdateButtonTapped(_ sender: UIButton) {
+//        backend.getSubwayTweets()
+//    }
     
     // MARK: - Table view Header
     
@@ -131,6 +132,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     }
     
     func updateTweet() {
+        backend.getSubwayTweets()
         print("updateTweet")
     }
     
