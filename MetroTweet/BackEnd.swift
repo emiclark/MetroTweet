@@ -13,12 +13,13 @@ import Foundation
 protocol BackEndDelegate: class {
     func didGetAccessToken()
     func failedToGetAccessToken(_ errorMsg: String)
-    func didGetSubwayTweets()
+    func didGetSubwayTweets(_ tweets: [Tweet])
     func failedToGetSubwayTweets(_ errorMsg: String)
 }
 
 
 class BackEnd {
+    static let sharedInstance = BackEnd()
     weak var delegate: BackEndDelegate?
 
     private var accessToken: String? = nil
@@ -31,6 +32,15 @@ class BackEnd {
     //////////////////////////////////////////////////////////////////////////////////////////
     public func getAccessToken() {
         var errorMsg: String? = nil
+        
+        // If have accessToken already then ...
+        if accessToken != nil {
+            // Inform delegate that we have a token
+            DispatchQueue.main.async {
+                self.delegate?.didGetAccessToken()
+            }
+            return
+        }
         
         // Format the credentials
         // For info, see https://dev.twitter.com/oauth/application-only
@@ -117,6 +127,79 @@ class BackEnd {
     
     //////////////////////////////////////////////////////////////////////////////////////////
     //
+    //  Method to return the file name for a subway line image.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public func getImageName(for subwayLine: String) -> String? {
+        let subwayLineImageDictionary = [
+            "1" : "1.png",
+            "2" : "2.png",
+            "3" : "3.png",
+            "4" : "4.png",
+            "5" : "5.png",
+            "6" : "6.png",
+            "7" : "7.png",
+            "A" : "A.png",
+            "B" : "B.png",
+            "C" : "C.png",
+            "D" : "D.png",
+            "E" : "E.png",
+            "F" : "F.png",
+            "G" : "G.png",
+            "J" : "J.png",
+            "L" : "L.png",
+            "M" : "M.png",
+            "N" : "N.png",
+            "Q" : "Q.png",
+            "R" : "R.png",
+            "S" : "S.png",
+            "W" : "W.png",
+            "Z" : "Z.png"
+        ]
+        
+        return subwayLineImageDictionary[subwayLine]
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Method to return the map URL for a subway line.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    public func getMapURL(for subwayLine: String) -> String? {
+        // Dictionary containing urls to line routes
+        let subwayLineURLDictionary = [
+            "1" : "http://web.mta.info/nyct/service/oneline.htm",
+            "2" : "http://web.mta.info/nyct/service/twoline.htm",
+            "3" : "http://web.mta.info/nyct/service/threelin.htm",
+            "4" : "http://web.mta.info/nyct/service/fourline.htm",
+            "5" : "http://web.mta.info/nyct/service/fiveline.htm",
+            "6" : "http://web.mta.info/nyct/service/sixline.htm",
+            "6Exp" : "http://web.mta.info/nyct/service/6d.htm",
+            "7" : "http://web.mta.info/nyct/service/sevenlin.htm",
+            "7Exp" : "http://web.mta.info/nyct/service/7d.htm",
+            "A" : "http://web.mta.info/nyct/service/aline.htm",
+            "B" : "http://web.mta.info/nyct/service/bline.htm",
+            "C" : "http://web.mta.info/nyct/service/cline.htm",
+            "D" : "http://web.mta.info/nyct/service/dline.htm",
+            "E" : "http://web.mta.info/nyct/service/eline.htm",
+            "F" : "http://web.mta.info/nyct/service/fline.htm",
+            "G" : "http://web.mta.info/nyct/service/gline.htm",
+            "J" : "http://web.mta.info/nyct/service/jline.htm",
+            "L" : "http://web.mta.info/nyct/service/lline.htm",
+            "M" : "http://web.mta.info/nyct/service/mline.htm",
+            "N" : "http://web.mta.info/nyct/service/nline.htm",
+            "Q" : "http://web.mta.info/nyct/service/qline.htm",
+            "R" : "http://web.mta.info/nyct/service/rline.htm",
+            "Shuttle" : "http://web.mta.info/nyct/service/sline.htm",
+            "W" : "http://web.mta.info/nyct/service/wline.htm",
+            "Z" : "http://web.mta.info/nyct/service/zline.htm"
+        ]
+        
+        return subwayLineURLDictionary[subwayLine]
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
     //  Method to request all of MTA's subway tweets.
     //
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -146,14 +229,8 @@ class BackEnd {
                         if let data = data,
                             let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                             if let statusArray = json["statuses"] as? [[String:Any]] {
-                                if self.processSubwayTweets(statusArray) {
-                                    DispatchQueue.main.async {
-                                        self.delegate?.didGetSubwayTweets()
-                                    }
-                                    return
-                                } else {
-                                    errorMsg = "Failed to parse subway tweets."
-                                }
+                                self.processSubwayTweets(statusArray)
+                                return
                             } else {
                                 errorMsg = "Missing statuses key from response."
                             }
@@ -194,6 +271,14 @@ class BackEnd {
         task.resume()
     }
     
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  This prevents others from using the default '()' initializer
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    private init() {
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Method to determine if the input is one the NYC subway line.
@@ -269,7 +354,7 @@ class BackEnd {
     //  Method to parse a subway tweet text.
     //
     //////////////////////////////////////////////////////////////////////////////////////////
-    private func parseSubway(tweetText text: String) {
+    private func parseSubway(tweetText text: String) -> Set<Character> {
         // Search for tweet for the word " train"
         var searchResult = text.range(of: " train",
                                            options: NSString.CompareOptions.literal,
@@ -283,7 +368,7 @@ class BackEnd {
             var subwayLines = parseForSubwayLines(in: frontHalf)
             // If found then ...
             if subwayLines.count > 0 {
-                print("Front: found train line: \(subwayLines)")
+                return subwayLines
                 // Otherwise, ...
             } else {
                 // Shift the index to after the word train
@@ -304,11 +389,13 @@ class BackEnd {
                     subwayLines = parseForSubwayLines(in: substring)
                     // If found then ...
                     if subwayLines.count > 0 {
-                        print("Rear: found train line: \(subwayLines)")
+                        return subwayLines
                     }
                 }
             }
         }
+        
+        return Set<Character>()
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -316,15 +403,26 @@ class BackEnd {
     //  Method to process all the MTA's subway tweets.
     //
     //////////////////////////////////////////////////////////////////////////////////////////
-    private func processSubwayTweets(_ statusArray: [[String:Any]]) -> Bool {
+    private func processSubwayTweets(_ statusArray: [[String:Any]]) {
+        var tweets = [Tweet]()
+        
         for tweetDictionary in statusArray {
             let tweetDate: String = tweetDictionary["created_at"]! as! String
             let tweetText: String = tweetDictionary["text"]! as! String
             if !tweetText.hasPrefix("@") {
-                parseSubway(tweetText: tweetText)
+                let subwayLines = parseSubway(tweetText: tweetText)
+                if subwayLines.count > 0 {
+                    for item in subwayLines {
+                        let newTweet = Tweet(id: String(item), createdAt: tweetDate, tweetString: tweetText)
+                        tweets.append(newTweet)
+                    }
+                }
             }
         }
-        return true
+        
+        DispatchQueue.main.async {
+            self.delegate?.didGetSubwayTweets(tweets)
+        }
     }
 
 

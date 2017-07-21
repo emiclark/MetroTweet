@@ -13,12 +13,14 @@ class Tweet: NSObject {
     let createdAt: String
     let tweetString: String
     let id: String
-    var routeUrl: URL
-
-    init(id: String, createdAt: String, tweetString: String, routeUrl: URL) {
+ 
+    init(id: String, createdAt: String, tweetString: String) {
         self.id = id
         self.createdAt = createdAt
         self.tweetString = tweetString
-        self.routeUrl = routeUrl
     }
 }
+
+
+var tweetCache = [Tweet]()
+var selectedLinesDictionary = [String: Bool]()
