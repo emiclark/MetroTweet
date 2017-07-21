@@ -65,7 +65,7 @@ class BackEnd {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             // If there was a connectivity issues then ...
             if let error = error {
-                errorMsg = "Connectivity error: \(error)."
+                errorMsg = "Connectivity error: \(error.localizedDescription)."
                 
                 // If receive a HTTP response then ...
             } else if let httpResponse = response as? HTTPURLResponse {
@@ -89,7 +89,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[200] Error deserializing JSON: \(error)."
+                        errorMsg = "[200] Error deserializing JSON: \(error.localizedDescription)."
                     }
                     
                 case 401, 403:
@@ -107,7 +107,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error)."
+                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
@@ -219,7 +219,7 @@ class BackEnd {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             // If there was a connectivity issues then ...
             if let error = error {
-                errorMsg = "Connectivity error: \(error)."
+                errorMsg = "Connectivity error: \(error.localizedDescription)."
                 
                 // If receive a HTTP response then ...
             } else if let httpResponse = response as? HTTPURLResponse {
@@ -236,7 +236,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[200] Error deserializing JSON: \(error)."
+                        errorMsg = "[200] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 case 401, 403:
                     do {
@@ -253,7 +253,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error)."
+                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
