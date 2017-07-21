@@ -53,224 +53,228 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-V2-3J4">
                                 <rect key="frame" x="10" y="264" width="356" height="275"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="center" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-Br-JWu">
-                                        <rect key="frame" x="3" y="0.0" width="350" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-Br-JWu">
+                                        <rect key="frame" x="2.5" y="0.0" width="351" height="50"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fI-cI-yOg">
-                                                <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="zLL-ku-3qF"/>
                                                 </constraints>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="1" image="1"/>
+                                                <state key="normal" image="1"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UGy-de-vNg"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SS0-3z-we8">
-                                                <rect key="frame" x="58" y="0.0" width="58" height="50"/>
+                                                <rect key="frame" x="58.5" y="0.0" width="58.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="Yhd-4C-TjH"/>
                                                 </constraints>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="2" image="2"/>
+                                                <state key="normal" image="2"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XpH-tH-Lq5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUp-zx-eZQ">
-                                                <rect key="frame" x="116" y="0.0" width="58" height="50"/>
+                                                <rect key="frame" x="117" y="0.0" width="58.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="OxA-m5-fYD"/>
                                                 </constraints>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="3" image="3"/>
+                                                <state key="normal" image="3"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z4R-3f-pxm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="4" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-uM-Z8n">
-                                                <rect key="frame" x="174" y="0.0" width="58" height="50"/>
+                                                <rect key="frame" x="175.5" y="0.0" width="58.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="7yl-U8-4TE"/>
                                                 </constraints>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="4" image="4"/>
+                                                <state key="normal" image="4"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kqv-oe-D6d"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5N-8z-NMw">
-                                                <rect key="frame" x="232" y="0.0" width="60" height="50"/>
+                                                <rect key="frame" x="234" y="0.0" width="58.5" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="5" image="5"/>
+                                                <state key="normal" image="5"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fN7-6q-WbP"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmO-al-RoI">
-                                                <rect key="frame" x="292" y="0.0" width="58" height="50"/>
+                                                <rect key="frame" x="292.5" y="0.0" width="58.5" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="6au-Eh-tmS"/>
                                                 </constraints>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="6" image="6"/>
+                                                <state key="normal" image="6"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iHc-VL-xRu"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="E5N-8z-NMw" secondAttribute="trailing" constant="58.5" id="VGi-mf-c5P"/>
+                                            <constraint firstItem="E5N-8z-NMw" firstAttribute="leading" secondItem="IUp-zx-eZQ" secondAttribute="trailing" constant="58.5" id="xfV-da-OeB"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-9N-7w7">
-                                        <rect key="frame" x="0.0" y="75" width="356" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-9N-7w7">
+                                        <rect key="frame" x="10.5" y="75" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" tag="7" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxo-o7-RKy">
-                                                <rect key="frame" x="0.0" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="A" image="A"/>
+                                                <state key="normal" image="A"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5B8-bs-j08"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybx-Tv-FRg">
-                                                <rect key="frame" x="59.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="57" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="C" image="C"/>
+                                                <state key="normal" image="C"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="amZ-5C-qgO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-dg-ECn">
-                                                <rect key="frame" x="118.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="114" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="E" image="E"/>
+                                                <state key="normal" image="E"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jyA-vx-KZG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="10" contentMode="center" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndq-YL-NdH">
-                                                <rect key="frame" x="178" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="171" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="N" image="N"/>
+                                                <state key="normal" image="N"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VsT-hs-saX"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="11" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54R-nZ-PMd">
-                                                <rect key="frame" x="237.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="228" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="Q" image="Q"/>
+                                                <state key="normal" image="Q"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cb4-yr-teh"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="12" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-iX-mke">
-                                                <rect key="frame" x="296.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="285" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="R" image="R"/>
+                                                <state key="normal" image="R"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vim-T1-STh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-BV-MME">
-                                        <rect key="frame" x="0.0" y="150" width="356" height="50"/>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-BV-MME">
+                                        <rect key="frame" x="10.5" y="150" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" tag="12" contentMode="center" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4R-3X-6Pw">
-                                                <rect key="frame" x="0.0" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="B" image="B"/>
+                                                <state key="normal" image="B"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cFj-5L-seq"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="13" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-0W-72t">
-                                                <rect key="frame" x="59.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="57" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="D" image="D"/>
+                                                <state key="normal" image="D"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lLP-0S-tKK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="14" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdl-Yf-0a0">
-                                                <rect key="frame" x="118.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="114" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="F" image="F"/>
+                                                <state key="normal" image="F"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qr1-1o-ggi"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="15" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-A2-OHJ">
-                                                <rect key="frame" x="178" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="171" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="M" image="M"/>
+                                                <state key="normal" image="M"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3uA-Ud-AeM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="16" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Cg-kVo">
-                                                <rect key="frame" x="237.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="228" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="J" image="J"/>
+                                                <state key="normal" image="J"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hbt-zX-34a"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="17" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bx-I8-T1p">
-                                                <rect key="frame" x="296.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="285" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="Z" image="Z"/>
+                                                <state key="normal" image="Z"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jvP-DJ-4yZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Mm-7B6">
-                                        <rect key="frame" x="0.0" y="225" width="356" height="50"/>
+                                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Mm-7B6">
+                                        <rect key="frame" x="10.5" y="225" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-Qi-UZj">
-                                                <rect key="frame" x="0.0" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="1" image="Blank"/>
+                                                <state key="normal" image="Blank"/>
                                             </button>
                                             <button opaque="NO" tag="18" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-xs-Kad">
-                                                <rect key="frame" x="59.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="57" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="7" image="7"/>
+                                                <state key="normal" image="7"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tCl-PW-5pe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="19" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-LH-iAc">
-                                                <rect key="frame" x="118.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="114" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="G" image="G"/>
+                                                <state key="normal" image="G"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wkE-PG-bnI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="20" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epf-VW-Obs">
-                                                <rect key="frame" x="178" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="171" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="L" image="L"/>
+                                                <state key="normal" image="L"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1gR-0W-jB3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="21" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-7Y-84m">
-                                                <rect key="frame" x="237.5" y="0.0" width="59" height="50"/>
+                                                <rect key="frame" x="228" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="S" image="S"/>
+                                                <state key="normal" image="S"/>
                                                 <connections>
                                                     <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b62-Ot-dgN"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuK-Fq-8ca">
-                                                <rect key="frame" x="296.5" y="0.0" width="59.5" height="50"/>
+                                                <rect key="frame" x="285" y="0.0" width="50" height="50"/>
                                                 <size key="titleShadowOffset" width="2" height="2"/>
-                                                <state key="normal" title="1" image="Blank"/>
+                                                <state key="normal" image="Blank"/>
                                             </button>
                                         </subviews>
                                     </stackView>
