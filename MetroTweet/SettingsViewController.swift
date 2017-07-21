@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
         
         selectedLinesDictionary[sender.description] = true
         // set border to show seleccted
-        sender.layer.cornerRadius =  sender.frame.size.width/2
+        sender.layer.cornerRadius =  50/2
         sender.layer.borderWidth = 3
         sender.layer.masksToBounds = true
         

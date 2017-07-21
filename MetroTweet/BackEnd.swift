@@ -65,7 +65,7 @@ class BackEnd {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             // If there was a connectivity issues then ...
             if let error = error {
-                errorMsg = "Connectivity error: \(error)."
+                errorMsg = "Connectivity error: \(error.localizedDescription)."
                 
                 // If receive a HTTP response then ...
             } else if let httpResponse = response as? HTTPURLResponse {
@@ -89,7 +89,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[200] Error deserializing JSON: \(error)."
+                        errorMsg = "[200] Error deserializing JSON: \(error.localizedDescription)."
                     }
                     
                 case 401, 403:
@@ -107,7 +107,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error)."
+                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
@@ -219,7 +219,7 @@ class BackEnd {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             // If there was a connectivity issues then ...
             if let error = error {
-                errorMsg = "Connectivity error: \(error)."
+                errorMsg = "Connectivity error: \(error.localizedDescription)."
                 
                 // If receive a HTTP response then ...
             } else if let httpResponse = response as? HTTPURLResponse {
@@ -236,7 +236,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[200] Error deserializing JSON: \(error)."
+                        errorMsg = "[200] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 case 401, 403:
                     do {
@@ -253,7 +253,7 @@ class BackEnd {
                             }
                         }
                     } catch {
-                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error)."
+                        errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
@@ -316,30 +316,32 @@ class BackEnd {
                 // Remove any trailing blank
                 trimmedString = trimmedString.trimmingCharacters(in: .whitespaces)
                 
-                // Extract the rear 4 character substring
-                let index = trimmedString.index(trimmedString.endIndex, offsetBy: -4)
-                let rearSubstring = trimmedString.substring(from: index)
-                
-                // If the rear substring is the word " and" then ...
-                if rearSubstring == " and" {
-                    // Remove the word " and" from the end
-                    var newSubstring = String(trimmedString.characters.dropLast(4))
+                if trimmedString.characters.count > 4 {
+                    // Extract the rear 4 character substring
+                    let index = trimmedString.index(trimmedString.endIndex, offsetBy: -4)
+                    let rearSubstring = trimmedString.substring(from: index)
                     
-                    // Remove any trailing blank
-                    trimmedString = newSubstring.trimmingCharacters(in: .whitespaces)
-                    
-                    // Get the last character in the string
-                    lastCharacter = trimmedString.characters.last
-                    
-                    // Remove the last character in the string
-                    newSubstring = String(trimmedString.characters.dropLast())
-                    
-                    // If the current last character in the string is a blank then ...
-                    if newSubstring.characters.last == " " {
-                        // If the last saved character is a subway line then ...
-                        if isSubwayLine(lastCharacter!) {
-                            // Add the found subway line to the set
-                            subwayLineSet.insert(lastCharacter!)
+                    // If the rear substring is the word " and" then ...
+                    if rearSubstring == " and" {
+                        // Remove the word " and" from the end
+                        var newSubstring = String(trimmedString.characters.dropLast(4))
+                        
+                        // Remove any trailing blank
+                        trimmedString = newSubstring.trimmingCharacters(in: .whitespaces)
+                        
+                        // Get the last character in the string
+                        lastCharacter = trimmedString.characters.last
+                        
+                        // Remove the last character in the string
+                        newSubstring = String(trimmedString.characters.dropLast())
+                        
+                        // If the current last character in the string is a blank then ...
+                        if newSubstring.characters.last == " " {
+                            // If the last saved character is a subway line then ...
+                            if isSubwayLine(lastCharacter!) {
+                                // Add the found subway line to the set
+                                subwayLineSet.insert(lastCharacter!)
+                            }
                         }
                     }
                 }
