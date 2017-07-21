@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-732" y="23"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MetroTweet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SettingsViewController" customModule="MetroTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -45,6 +45,7 @@
                                 </constraints>
                                 <state key="normal" title="next"/>
                                 <connections>
+                                    <action selector="settingsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vsq-7k-GEq"/>
                                     <segue destination="e7L-1x-GQL" kind="show" id="tUA-n6-6mJ"/>
                                 </connections>
                             </button>
@@ -62,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="38" y="33"/>
         </scene>
-        <!--Tweet Table View Controller-->
+        <!--Tweets for-->
         <scene sceneID="iBw-pn-PoR">
             <objects>
                 <tableViewController id="e7L-1x-GQL" customClass="TweetTableViewController" customModule="MetroTweet" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,6 +86,7 @@
                             <outlet property="delegate" destination="e7L-1x-GQL" id="HCx-Gl-xoV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Tweets for" id="5Jm-Ob-cqM"/>
                     <connections>
                         <outlet property="tweetTableView" destination="UtY-5H-lFc" id="vgT-Mp-PUI"/>
                     </connections>
