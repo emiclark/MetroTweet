@@ -13,11 +13,13 @@ class Tweet: NSObject {
     let createdAt: String
     let tweetString: String
     let id: String
- 
-    init(id: String, createdAt: String, tweetString: String) {
+    var routeUrl: URL
+
+    init(id: String, createdAt: String, tweetString: String, routeUrl: URL) {
         self.id = id
         self.createdAt = createdAt
         self.tweetString = tweetString
+        self.routeUrl = routeUrl
     }
 
 }

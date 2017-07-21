@@ -8,100 +8,28 @@
 
 import UIKit
 
-
-class TweetTableViewController: UITableViewController, BackEndDelegate {
+class TweetTableViewController: UITableViewController {
 
     
     @IBOutlet var tweetTableView: UITableView!
-    let tweetBackend = BackEnd.sharedInstance
+    let tweetBackend = TweetBackEnd()
     var vcTitle = "Tweets for " + "E, F, M"
     var currentTweet: Tweet? = nil
-    
-    private let backend = BackEnd.sharedInstance
-    private var tweetDisplayIndexes = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backend.delegate = self
-        backend.getAccessToken()
-        
+        tweetBackend.createTweetArray()
         self.navigationItem.title = vcTitle
 
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-    }
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Delegate method called when we successfully received an access token from Twitter.
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    func didGetAccessToken() {
-        // enable update button
-    }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Delegate method called when we successfully received tweets from Twitter.
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    func didGetSubwayTweets(_ tweets: [Tweet]) {
-        if tweetCache.count > 0 {
-            tweetCache.insert(contentsOf: tweets, at: 0)
-        } else {
-            tweetCache.append(contentsOf: tweets)
-        }
-
-        // purge cache of old tweets
-
-        // create tweetDisplayIndexArray
-        for (index, tweet) in tweetCache.enumerated() {
-            if selectedLinesDictionary[tweet.id]!  {
-                tweetDisplayIndexes.append(index)
-            }
-        }
         
-        // update table view
-        tweetTableView.reloadData()
-    }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Delegate method called when we failed to received an access token from Twitter.
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    func failedToGetAccessToken(_ errorMsg: String) {
-        showErrorAlert(for: errorMsg)
+        tweetBackend.createTweetArray()
+        
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Delegate method called when we failed to received tweets from Twitter.
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    func failedToGetSubwayTweets(_ errorMsg: String) {
-        showErrorAlert(for: errorMsg)
-    }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Method for displaying an "error dialog box".
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    private func showErrorAlert(for errorMsg: String) {
-        let alert = UIAlertController(title: "Error",
-                                      message: errorMsg,
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
-        
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
-    
     func UpdateButtonTapped(_ sender: UIButton) {
     }
     
@@ -142,7 +70,8 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweetDisplayIndexes.count
+        // #warning Incomplete implementation, return the number of rows
+        return tweetBackend.tweetArray.count
     }
 
     
@@ -152,23 +81,23 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         
         cell.tweet.numberOfLines = 0
         cell.tweet.lineBreakMode = NSLineBreakMode.byWordWrapping
-        let cacheIndex = tweetDisplayIndexes[indexPath.row]
-        cell.createdAt.text = tweetCache[cacheIndex].createdAt
-        cell.tweet.text = tweetCache[cacheIndex].tweetString
-        let lineID = tweetCache[cacheIndex].id
-        cell.metroID.image = UIImage(named: backend.getImageName(for: lineID)!)
+        cell.createdAt.text = tweetBackend.tweetArray[indexPath.row].createdAt
+        cell.tweet.text = tweetBackend.tweetArray[indexPath.row].tweetString
+        let lineID = tweetBackend.tweetArray[indexPath.row].id
+        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[lineID]!)
         return cell
     }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let subwayLine = tweetCache[tweetDisplayIndexes[indexPath.row]].id
-        if let urlStr = backend.getMapURL(for: subwayLine) {
-            let webVC = LineWebDataViewController()
-            webVC.url = URL(string: urlStr)
-            webVC.navigationItem.title = "Route for " + subwayLine
-            self.navigationController?.pushViewController(webVC, animated: true)
-        }
+        currentTweet = tweetBackend.tweetArray[indexPath.row]
+        
+        print(indexPath.row, tweetBackend.tweetArray[indexPath.row].id, tweetBackend.tweetArray[indexPath.row].createdAt, tweetBackend.tweetArray[indexPath.row].tweetString, tweetBackend.tweetArray[indexPath.row].routeUrl)
+        
+        let webVC = LineWebDataViewController()
+        webVC.url = currentTweet?.routeUrl
+        webVC.navigationItem.title = "Routes for " + (currentTweet?.id)!
+        self.navigationController?.pushViewController(webVC, animated: true)
     }
     
     
