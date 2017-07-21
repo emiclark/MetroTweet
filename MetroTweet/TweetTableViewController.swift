@@ -14,6 +14,7 @@ class TweetTableViewController: UITableViewController {
     @IBOutlet var tweetTableView: UITableView!
     let tweetBackend = TweetBackEnd()
     var vcTitle = "Tweets for " + "E, F, M"
+    var currentTweet: Tweet? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,15 +83,22 @@ class TweetTableViewController: UITableViewController {
         cell.tweet.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.createdAt.text = tweetBackend.tweetArray[indexPath.row].createdAt
         cell.tweet.text = tweetBackend.tweetArray[indexPath.row].tweetString
-        let id = tweetBackend.tweetArray[indexPath.row].id
-        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict["1"]!)
-                
-        
-//        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[id]!)
+        let lineID = tweetBackend.tweetArray[indexPath.row].id
+        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[lineID]!)
         return cell
     }
  
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        currentTweet = tweetBackend.tweetArray[indexPath.row]
+        
+        print(indexPath.row, tweetBackend.tweetArray[indexPath.row].id, tweetBackend.tweetArray[indexPath.row].createdAt, tweetBackend.tweetArray[indexPath.row].tweetString, tweetBackend.tweetArray[indexPath.row].routeUrl)
+        
+        let webVC = LineWebDataViewController()
+        webVC.url = currentTweet?.routeUrl
+        webVC.navigationItem.title = "Routes for " + (currentTweet?.id)!
+        self.navigationController?.pushViewController(webVC, animated: true)
+    }
     
     
        /*

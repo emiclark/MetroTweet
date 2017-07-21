@@ -11,6 +11,9 @@ import WebKit
 
 class LineWebDataViewController: UIViewController {
 
+    var url: URL? = nil
+//    var title: String() = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

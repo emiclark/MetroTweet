@@ -11,13 +11,20 @@ import WebKit
 
 class SettingsViewController: UIViewController {
     
+    let tweetBackend = TweetBackEnd()
+    var lineString = String()
+    
     // FIXME: set nav title to lines
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
         let tweetTVC = TweetTableViewController()
 //        tweetTVC.vcTitle = "Tweets for " + "E, F, M"
-        tweetTVC.title = "Tweets for " + "E, F, M"
+        tweetTVC.title = tweetBackend.lineString
 
 //        self.navigationController?.pushViewController(tweetTVC, animated: true)
+    }
+    
+    func selectMetroId(_ sender: UIButton) {
+        print("metro line added:", sender)
     }
 
     override func viewDidLoad() {

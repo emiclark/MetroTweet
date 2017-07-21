@@ -10,9 +10,9 @@ import UIKit
 
 class TweetBackEnd: NSObject {
     
+    var lineString = String()  // used to show metro lines in navigation title on TweetTableViewController
     var tweetArray = [Tweet]()
-    var metroImage: UIImage?
-    var idArray = ["A","B","C"]
+    var idArray = [String]()
     
     // Dictionary containing names of metro number images
     var metroImageDict = [
@@ -80,10 +80,10 @@ class TweetBackEnd: NSObject {
             
             // get time
             let date = Date()
-            let id = "7"
+            let id = "1"
             let createdAt = "\(date)"
-            let tweet = Tweet(id: id, createdAt: createdAt, tweetString: tweetString)
-            
+            let routeUrl = URL(string:lineDict[id]!)
+            let tweet = Tweet(id: id, createdAt: createdAt, tweetString: tweetString, routeUrl: routeUrl!)
             tweetArray.append(tweet)
         }
     }
@@ -94,9 +94,15 @@ class TweetBackEnd: NSObject {
         
         // parse tweet for metro line number(s) and add to idArray
         idArray.append(idNum)
-        idArray.append("A")
-        idArray.append("C")
-    
+        lineString += idNum + ", "
+        idNum = "A"
+        idArray.append(idNum)
+        lineString += idNum + ", "
+        idNum = "C"
+        idArray.append(idNum)
+        lineString += idNum
+
+        print("createIDArray:",idNum, lineString)
     }
     
     
