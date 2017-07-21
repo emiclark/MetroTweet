@@ -14,7 +14,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     @IBOutlet var tweetTableView: UITableView!
     let tweetBackend = BackEnd.sharedInstance
-    var vcTitle = "Tweets for " + "E, F, M"
+    var vcTitle = ""
     var currentTweet: Tweet? = nil
     
     private let backend = BackEnd.sharedInstance
@@ -58,6 +58,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         
         // create tweetDisplayIndexArray
         for (index, tweet) in tweetCache.enumerated() {
+            print(tweet.id)
             if selectedLinesDictionary[tweet.id]!  {
                 tweetDisplayIndexes.append(index)
             }
