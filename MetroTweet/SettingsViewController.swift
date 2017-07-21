@@ -11,21 +11,34 @@ import WebKit
 
 class SettingsViewController: UIViewController {
     
-    let tweetBackend = TweetBackEnd()
     var lineString = String()
     
-    // FIXME: set nav title to lines
-    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
         let tweetTVC = TweetTableViewController()
-//        tweetTVC.vcTitle = "Tweets for " + "E, F, M"
-        tweetTVC.title = tweetBackend.lineString
+        UserDefaults.standard.setValue(selectedLinesDictionary, forKeyPath: "selectedLinesDictionary")
+    }
+ 
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        print("saveSelectedLines")
+        
+        selectedLinesDictionary[sender.description] = true
+        // set border to show seleccted
+        sender.layer.cornerRadius =  sender.frame.size.width/2
+        sender.layer.borderWidth = 3
+        sender.layer.masksToBounds = true
+        
+        //
+//        if(sender.isHighlighted) {
+//            sender.layer.borderColor = UIColor.green as! CGColor
+//        } else {
+//            sender.layer.borderWidth = 0
+//        }
+        
+        
+        
+        
+    }
 
-//        self.navigationController?.pushViewController(tweetTVC, animated: true)
-    }
-    
-    func selectMetroId(_ sender: UIButton) {
-        print("metro line added:", sender)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

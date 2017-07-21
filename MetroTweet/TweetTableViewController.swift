@@ -8,41 +8,113 @@
 
 import UIKit
 
-class TweetTableViewController: UITableViewController {
 
+class TweetTableViewController: UITableViewController, BackEndDelegate {
+    
     
     @IBOutlet var tweetTableView: UITableView!
-    let tweetBackend = TweetBackEnd()
+    let tweetBackend = BackEnd.sharedInstance
     var vcTitle = "Tweets for " + "E, F, M"
     var currentTweet: Tweet? = nil
     
+    private let backend = BackEnd.sharedInstance
+    private var tweetDisplayIndexes = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tweetBackend.createTweetArray()
+        
+        backend.delegate = self
+        backend.getAccessToken()
+        
         self.navigationItem.title = vcTitle
-
+        
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        
-        tweetBackend.createTweetArray()
-        
     }
-
-
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Delegate method called when we successfully received an access token from Twitter.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    func didGetAccessToken() {
+        // enable update button
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Delegate method called when we successfully received tweets from Twitter.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    func didGetSubwayTweets(_ tweets: [Tweet]) {
+        if tweetCache.count > 0 {
+            tweetCache.insert(contentsOf: tweets, at: 0)
+        } else {
+            tweetCache.append(contentsOf: tweets)
+        }
+        
+        // purge cache of old tweets
+        
+        // create tweetDisplayIndexArray
+        for (index, tweet) in tweetCache.enumerated() {
+            if selectedLinesDictionary[tweet.id]!  {
+                tweetDisplayIndexes.append(index)
+            }
+        }
+        
+        // update table view
+        tweetTableView.reloadData()
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Delegate method called when we failed to received an access token from Twitter.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    func failedToGetAccessToken(_ errorMsg: String) {
+        showErrorAlert(for: errorMsg)
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Delegate method called when we failed to received tweets from Twitter.
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    func failedToGetSubwayTweets(_ errorMsg: String) {
+        showErrorAlert(for: errorMsg)
+    }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //
+    //  Method for displaying an "error dialog box".
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////
+    private func showErrorAlert(for errorMsg: String) {
+        let alert = UIAlertController(title: "Error",
+                                      message: errorMsg,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func UpdateButtonTapped(_ sender: UIButton) {
     }
     
     // MARK: - Table view Header
-
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(60)
     }
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    
-//        let frame = tweetTableView.frame
+        
+        //        let frame = tweetTableView.frame
         
         // create button
         let button = UIButton(frame: CGRect(x: 120 , y: 15, width: 200, height: 30))
@@ -55,7 +127,7 @@ class TweetTableViewController: UITableViewController {
         headerView.backgroundColor = .lightGray
         headerView.addSubview(button)   // add the button to the view
         
-        return headerView   
+        return headerView
     }
     
     func updateTweet() {
@@ -63,17 +135,16 @@ class TweetTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return tweetBackend.tweetArray.count
+        return tweetDisplayIndexes.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -81,34 +152,34 @@ class TweetTableViewController: UITableViewController {
         
         cell.tweet.numberOfLines = 0
         cell.tweet.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.createdAt.text = tweetBackend.tweetArray[indexPath.row].createdAt
-        cell.tweet.text = tweetBackend.tweetArray[indexPath.row].tweetString
-        let lineID = tweetBackend.tweetArray[indexPath.row].id
-        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[lineID]!)
+        let cacheIndex = tweetDisplayIndexes[indexPath.row]
+        cell.createdAt.text = tweetCache[cacheIndex].createdAt
+        cell.tweet.text = tweetCache[cacheIndex].tweetString
+        let lineID = tweetCache[cacheIndex].id
+        cell.metroID.image = UIImage(named: backend.getImageName(for: lineID)!)
         return cell
     }
- 
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        currentTweet = tweetBackend.tweetArray[indexPath.row]
         
-        print(indexPath.row, tweetBackend.tweetArray[indexPath.row].id, tweetBackend.tweetArray[indexPath.row].createdAt, tweetBackend.tweetArray[indexPath.row].tweetString, tweetBackend.tweetArray[indexPath.row].routeUrl)
-        
-        let webVC = LineWebDataViewController()
-        webVC.url = currentTweet?.routeUrl
-        webVC.navigationItem.title = "Routes for " + (currentTweet?.id)!
-        self.navigationController?.pushViewController(webVC, animated: true)
+        let subwayLine = tweetCache[tweetDisplayIndexes[indexPath.row]].id
+        if let urlStr = backend.getMapURL(for: subwayLine) {
+            let webVC = LineWebDataViewController()
+            webVC.url = URL(string: urlStr)
+            webVC.navigationItem.title = "Route for " + subwayLine
+            self.navigationController?.pushViewController(webVC, animated: true)
+        }
     }
     
     
-       /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
