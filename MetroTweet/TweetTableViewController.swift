@@ -10,6 +10,8 @@ import UIKit
 
 class TweetTableViewController: UITableViewController {
 
+    @IBOutlet var tweetTableView: UITableView!
+    
     let tweetBackend = TweetBackEnd()
 
     
@@ -19,11 +21,13 @@ class TweetTableViewController: UITableViewController {
         
         tweetBackend.createTweetArray()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // register custom cell class
+        tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        tweetBackend.createTweetArray()
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,19 +49,17 @@ class TweetTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TweetTableViewCell
         
-        let metroid = tweetBackend.tweetArray[indexPath.row].id
-        
-        // has string pointing to image to use
-//        metroidImage = UIImage(string: metroDict[metroid])
-//        cell.metroID = UIImage(named: metroid)
+        cell.tweet.numberOfLines = 0
+        cell.tweet.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.createdAt.text = tweetBackend.tweetArray[indexPath.row].createdAt
         cell.tweet.text = tweetBackend.tweetArray[indexPath.row].tweetString
-
+        let id = tweetBackend.tweetArray[indexPath.row].id
+        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict["1"]!)
         
-        
-
+//        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[id]!)
         return cell
     }
  
