@@ -34,7 +34,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -50,145 +50,169 @@
                                     <segue destination="e7L-1x-GQL" kind="show" id="tUA-n6-6mJ"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-Br-JWu">
-                                <rect key="frame" x="13" y="264" width="348" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="TPu-V2-3J4">
+                                <rect key="frame" x="10" y="264" width="356" height="275"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fI-cI-yOg">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SS0-3z-we8">
-                                        <rect key="frame" x="58" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="2"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUp-zx-eZQ">
-                                        <rect key="frame" x="116" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="3"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-uM-Z8n">
-                                        <rect key="frame" x="174" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="4"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5N-8z-NMw">
-                                        <rect key="frame" x="232" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmO-al-RoI">
-                                        <rect key="frame" x="290" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="center" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-Br-JWu">
+                                        <rect key="frame" x="3" y="0.0" width="350" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fI-cI-yOg">
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="zLL-ku-3qF"/>
+                                                </constraints>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SS0-3z-we8">
+                                                <rect key="frame" x="58" y="0.0" width="58" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="Yhd-4C-TjH"/>
+                                                </constraints>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="2"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUp-zx-eZQ">
+                                                <rect key="frame" x="116" y="0.0" width="58" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="OxA-m5-fYD"/>
+                                                </constraints>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="3"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-uM-Z8n">
+                                                <rect key="frame" x="174" y="0.0" width="58" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="7yl-U8-4TE"/>
+                                                </constraints>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="4"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5N-8z-NMw">
+                                                <rect key="frame" x="232" y="0.0" width="60" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="5" image="5"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmO-al-RoI">
+                                                <rect key="frame" x="292" y="0.0" width="58" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="6au-Eh-tmS"/>
+                                                </constraints>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="6"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-9N-7w7">
+                                        <rect key="frame" x="0.0" y="75" width="356" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="center" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndq-YL-NdH">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="7" image="7"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54R-nZ-PMd">
+                                                <rect key="frame" x="56" y="0.0" width="64" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="G" image="G"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-iX-mke">
+                                                <rect key="frame" x="120" y="0.0" width="62" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="S" image="S"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxo-o7-RKy">
+                                                <rect key="frame" x="182" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybx-Tv-FRg">
+                                                <rect key="frame" x="240" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-dg-ECn">
+                                                <rect key="frame" x="298" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-BV-MME">
+                                        <rect key="frame" x="4" y="150" width="348" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4R-3X-6Pw">
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-0W-72t">
+                                                <rect key="frame" x="58" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdl-Yf-0a0">
+                                                <rect key="frame" x="116" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-A2-OHJ">
+                                                <rect key="frame" x="174" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Cg-kVo">
+                                                <rect key="frame" x="232" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bx-I8-T1p">
+                                                <rect key="frame" x="290" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="center" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Mm-7B6">
+                                        <rect key="frame" x="4" y="225" width="348" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-xs-Kad">
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-LH-iAc">
+                                                <rect key="frame" x="58" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epf-VW-Obs">
+                                                <rect key="frame" x="116" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-7Y-84m">
+                                                <rect key="frame" x="174" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-Qi-UZj">
+                                                <rect key="frame" x="232" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuK-Fq-8ca">
+                                                <rect key="frame" x="290" y="0.0" width="58" height="50"/>
+                                                <size key="titleShadowOffset" width="2" height="2"/>
+                                                <state key="normal" title="1" image="1"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-9N-7w7">
-                                <rect key="frame" x="13.5" y="344" width="348" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndq-YL-NdH">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54R-nZ-PMd">
-                                        <rect key="frame" x="58" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ti-iX-mke">
-                                        <rect key="frame" x="116" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxo-o7-RKy">
-                                        <rect key="frame" x="174" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybx-Tv-FRg">
-                                        <rect key="frame" x="232" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-dg-ECn">
-                                        <rect key="frame" x="290" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-BV-MME">
-                                <rect key="frame" x="13" y="424" width="348" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4R-3X-6Pw">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-0W-72t">
-                                        <rect key="frame" x="58" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdl-Yf-0a0">
-                                        <rect key="frame" x="116" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0J-A2-OHJ">
-                                        <rect key="frame" x="174" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Cg-kVo">
-                                        <rect key="frame" x="232" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bx-I8-T1p">
-                                        <rect key="frame" x="290" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Mm-7B6">
-                                <rect key="frame" x="13.5" y="504" width="348" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-xs-Kad">
-                                        <rect key="frame" x="0.0" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-LH-iAc">
-                                        <rect key="frame" x="58" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epf-VW-Obs">
-                                        <rect key="frame" x="116" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-7Y-84m">
-                                        <rect key="frame" x="174" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-Qi-UZj">
-                                        <rect key="frame" x="232" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuK-Fq-8ca">
-                                        <rect key="frame" x="290" y="0.0" width="58" height="50"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="1" image="1"/>
-                                    </button>
-                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="356" id="7qy-9g-050"/>
+                                    <constraint firstItem="TYh-Br-JWu" firstAttribute="leading" secondItem="TPu-V2-3J4" secondAttribute="leading" constant="3" id="XZN-QU-np1"/>
+                                </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fmA-4H-nzb">
                                 <rect key="frame" x="67" y="72" width="240" height="135"/>
@@ -202,18 +226,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8Xi-c2-vx5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="148" id="1qd-oT-ofj"/>
-                            <constraint firstItem="QpW-BV-MME" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="37h-n0-Mk5"/>
-                            <constraint firstItem="vPh-Mm-7B6" firstAttribute="top" secondItem="QpW-BV-MME" secondAttribute="bottom" constant="30" id="63w-TX-P5Y"/>
-                            <constraint firstItem="TYh-Br-JWu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="Mxu-eq-5WR"/>
-                            <constraint firstItem="3Xf-9N-7w7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NHc-lF-JdH"/>
+                            <constraint firstItem="8Xi-c2-vx5" firstAttribute="top" secondItem="TPu-V2-3J4" secondAttribute="bottom" constant="43" id="Ru4-Da-Q7v"/>
                             <constraint firstItem="fmA-4H-nzb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Uur-y6-JRL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8Xi-c2-vx5" secondAttribute="bottom" constant="55" id="WeZ-HF-Zdl"/>
-                            <constraint firstItem="TYh-Br-JWu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dEv-Me-vyS"/>
-                            <constraint firstItem="vPh-Mm-7B6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jHA-Td-SG0"/>
-                            <constraint firstItem="3Xf-9N-7w7" firstAttribute="top" secondItem="TYh-Br-JWu" secondAttribute="bottom" constant="30" id="mhd-cT-vge"/>
                             <constraint firstItem="fmA-4H-nzb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nxi-Vg-YpJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Xi-c2-vx5" secondAttribute="trailing" constant="149" id="olY-1A-Jh2"/>
-                            <constraint firstItem="QpW-BV-MME" firstAttribute="top" secondItem="3Xf-9N-7w7" secondAttribute="bottom" constant="30" id="wOp-EH-hs1"/>
+                            <constraint firstItem="TPu-V2-3J4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yIc-91-xXu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GoS-tc-vIG"/>
@@ -260,5 +278,10 @@
         <image name="2" width="50" height="50"/>
         <image name="3" width="50" height="50"/>
         <image name="4" width="50" height="50"/>
+        <image name="5" width="50" height="50"/>
+        <image name="6" width="50" height="50"/>
+        <image name="7" width="50" height="50"/>
+        <image name="G" width="50" height="50"/>
+        <image name="S" width="50" height="50"/>
     </resources>
 </document>
