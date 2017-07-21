@@ -33,16 +33,46 @@ class TweetTableViewController: UITableViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
+
+    
+    // MARK: - Table view Header
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(60)
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+        let frame = tweetTableView.frame
+        
+        // create button
+        let button = UIButton(frame: CGRect(x: 120 , y: 15, width: 200, height: 30))
+        button.addTarget(self, action: #selector(updateTweet), for: .touchUpInside)
+        button.setTitle("Update Tweets", for: .normal)
+        button.backgroundColor = .blue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.white, for: .normal)
+
+        
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 60))
+        headerView.backgroundColor = .lightGray
+        headerView.addSubview(button)   // add the button to the view
+        
+        return headerView   
+    }
+    
+    func updateTweet() {
+        print("updateTweet")
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,19 +98,6 @@ class TweetTableViewController: UITableViewController {
     }
  
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        // This is where you would change section header content
-        return tableView.dequeueReusableCell(withIdentifier: "header")
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-        tweetTableView.sectionIndexBackgroundColor = .yellow
-        return 60
-    }
-    
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
