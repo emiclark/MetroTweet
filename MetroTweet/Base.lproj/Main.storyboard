@@ -66,13 +66,13 @@
         <scene sceneID="iBw-pn-PoR">
             <objects>
                 <tableViewController id="e7L-1x-GQL" customClass="TweetTableViewController" customModule="MetroTweet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="UtY-5H-lFc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="50" sectionFooterHeight="28" id="UtY-5H-lFc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ki9-j7-gI5">
-                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ki9-j7-gI5" id="ZFY-xx-ZwD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
@@ -91,7 +91,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TbE-qk-ws7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808" y="25"/>
+            <point key="canvasLocation" x="807.20000000000005" y="24.7376311844078"/>
         </scene>
     </scenes>
 </document>

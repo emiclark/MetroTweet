@@ -10,6 +10,7 @@ import UIKit
 
 class TweetTableViewController: UITableViewController {
 
+
     @IBOutlet var tweetTableView: UITableView!
     
     let tweetBackend = TweetBackEnd()
@@ -19,8 +20,10 @@ class TweetTableViewController: UITableViewController {
         super.viewDidLoad()
 
         
+        func UpdateButtonTapped(_ sender: UIButton) {
+        }
         tweetBackend.createTweetArray()
-        
+
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
@@ -58,11 +61,25 @@ class TweetTableViewController: UITableViewController {
         cell.tweet.text = tweetBackend.tweetArray[indexPath.row].tweetString
         let id = tweetBackend.tweetArray[indexPath.row].id
         cell.metroID.image = UIImage(named: tweetBackend.metroImageDict["1"]!)
+                
         
 //        cell.metroID.image = UIImage(named: tweetBackend.metroImageDict[id]!)
         return cell
     }
  
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        // This is where you would change section header content
+        return tableView.dequeueReusableCell(withIdentifier: "header")
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        tweetTableView.sectionIndexBackgroundColor = .yellow
+        return 60
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
