@@ -21,4 +21,7 @@ class Tweet: NSObject {
         self.tweetString = tweetString
         self.routeUrl = routeUrl
     }
+
 }
+
+var selectedLinesDictionary = [String:Bool]()
