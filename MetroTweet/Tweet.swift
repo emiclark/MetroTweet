@@ -24,7 +24,6 @@ class Tweet: NSObject {
 }
 
 
-var tweetCache = [Tweet]()
 var selectedLinesDictionary = [
             "1": false,
             "2": false,

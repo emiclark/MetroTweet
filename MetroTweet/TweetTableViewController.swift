@@ -9,27 +9,29 @@
 import UIKit
 
 
+fileprivate var tweetCache = [Tweet]()
+fileprivate var tweetDisplayIndexes = [Int]()
+
+
 class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
     @IBOutlet var tweetTableView: UITableView!
-    let tweetBackend = BackEnd.sharedInstance
     var vcTitle = ""
     var currentTweet: Tweet? = nil
     
     private let backend = BackEnd.sharedInstance
-    private var tweetDisplayIndexes = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        backend.delegate = self
-        backend.getAccessToken()
         
         self.navigationItem.title = vcTitle
         
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        backend.delegate = self
+        backend.getAccessToken()
     }
     
     
@@ -48,15 +50,18 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     func didGetSubwayTweets(_ tweets: [Tweet]) {
-        if tweetCache.count > 0 {
-            tweetCache.insert(contentsOf: tweets, at: 0)
-        } else {
-            tweetCache.append(contentsOf: tweets)
+        if tweets.count > 0 {
+            if tweetCache.count > 0 {
+                tweetCache.insert(contentsOf: tweets, at: 0)
+            } else {
+                tweetCache.append(contentsOf: tweets)
+            }
         }
         
         // purge cache of old tweets
         
-        // create tweetDisplayIndexArray
+        // Refresh the tweetDisplayIndexArray
+        tweetDisplayIndexes.removeAll()
         for (index, tweet) in tweetCache.enumerated() {
             print(tweet.id)
             if selectedLinesDictionary[tweet.id]!  {
