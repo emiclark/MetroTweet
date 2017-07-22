@@ -19,10 +19,17 @@ protocol BackEndDelegate: class {
 
 
 class BackEnd {
-    static let sharedInstance = BackEnd()
+    // MARK: - Public Properties
+    
     weak var delegate: BackEndDelegate?
+    static let sharedInstance = BackEnd()
+    
+    // MARK: - Private Properties
     
     private var accessToken: String? = nil
+    private var lastSubwayTweetId: Int64 = 0
+
+    // MARK: - Public Methods
     
     //////////////////////////////////////////////////////////////////////////////////////////
     //
@@ -205,9 +212,15 @@ class BackEnd {
     //////////////////////////////////////////////////////////////////////////////////////////
     public func getSubwayTweets() {
         var errorMsg: String? = nil
+        var urlStr: String
         
         // create the request
-        let url = URL(string: "https://api.twitter.com/1.1/search/tweets.json?q=-Replying+from%3A%40NYCTSubway&count=100")!
+        if lastSubwayTweetId == 0 {
+            urlStr = "https://api.twitter.com/1.1/search/tweets.json?q=-Replying+from%3A%40NYCTSubway&count=100"
+        } else {
+            urlStr = "https://api.twitter.com/1.1/search/tweets.json?q=-Replying+from%3A%40NYCTSubway&count=100&since_id=\(lastSubwayTweetId)"
+        }
+        let url = URL(string: urlStr)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(accessToken!)", forHTTPHeaderField: "Authorization")
@@ -271,6 +284,8 @@ class BackEnd {
         task.resume()
     }
     
+    // MARK: - Private Methods
+    
     //////////////////////////////////////////////////////////////////////////////////////////
     //
     //  This prevents others from using the default '()' initializer
@@ -285,119 +300,82 @@ class BackEnd {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     private func isSubwayLine(_ c: Character) -> Bool {
-        let subwayLineSet = Set<Character>(["1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E", "F", "G", "J", "L", "M", "N", "Q", "R", "S", "W", "Z"])
+        let subwayLineSet = Set<Character>(["1", "2", "3", "4", "5", "6", "7", "A", "B",
+                                            "C", "D", "E", "F", "G", "J", "L", "M", "N",
+                                            "Q", "R", "S", "W", "Z"])
         return subwayLineSet.contains(c)
     }
-    
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //
-    //  Method to parse a substring for subway lines.
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////
-    private func parseForSubwayLines(in substring: String) -> Set<Character> {
-        var subwayLineSet = Set<Character>()
-        
-        // Remove any trailing blank
-        var trimmedString = substring.trimmingCharacters(in: .whitespaces)
-        
-        // Get the last character in the string
-        var lastCharacter = trimmedString.characters.last
-        
-        // Remove the last character in the string
-        trimmedString = String(trimmedString.characters.dropLast())
-        
-        // If the current last character in the string is a blank then ...
-        if trimmedString.characters.last == " " {
-            // If the last saved character is a subway line then ...
-            if isSubwayLine(lastCharacter!) {
-                // Add the found subway line to the set
-                subwayLineSet.insert(lastCharacter!)
-                
-                // Remove any trailing blank
-                trimmedString = trimmedString.trimmingCharacters(in: .whitespaces)
-                
-                if trimmedString.characters.count > 4 {
-                    // Extract the rear 4 character substring
-                    let index = trimmedString.index(trimmedString.endIndex, offsetBy: -4)
-                    let rearSubstring = trimmedString.substring(from: index)
-                    
-                    // If the rear substring is the word " and" then ...
-                    if rearSubstring == " and" {
-                        // Remove the word " and" from the end
-                        var newSubstring = String(trimmedString.characters.dropLast(4))
-                        
-                        // Remove any trailing blank
-                        trimmedString = newSubstring.trimmingCharacters(in: .whitespaces)
-                        
-                        // Get the last character in the string
-                        lastCharacter = trimmedString.characters.last
-                        
-                        // Remove the last character in the string
-                        newSubstring = String(trimmedString.characters.dropLast())
-                        
-                        // If the current last character in the string is a blank then ...
-                        if newSubstring.characters.last == " " {
-                            // If the last saved character is a subway line then ...
-                            if isSubwayLine(lastCharacter!) {
-                                // Add the found subway line to the set
-                                subwayLineSet.insert(lastCharacter!)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        return subwayLineSet
-    }
-    
+
     //////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Method to parse a subway tweet text.
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     private func parseSubway(tweetText text: String) -> Set<Character> {
-        // Search for tweet for the word " train"
-        var searchResult = text.range(of: " train",
-                                      options: NSString.CompareOptions.literal,
-                                      range: text.startIndex..<text.endIndex,
-                                      locale: nil)
-        // If " train" was found then ...
-        if let range1 = searchResult {
-            // Extract front half of the string
-            let frontHalf = text.substring(to: range1.lowerBound)
-            // Parse front half for subway lines
-            var subwayLines = parseForSubwayLines(in: frontHalf)
-            // If found then ...
-            if subwayLines.count > 0 {
-                return subwayLines
-                // Otherwise, ...
-            } else {
-                // Shift the index to after the word train
-                let rearIndex = text.index(range1.lowerBound, offsetBy: 6)
-                // Extract rear half of the string
-                let rearHalf = text.substring(from: rearIndex)
+        var index = 0
+        var subwayLineSet = Set<Character>()
+        
+        // Break up the text string into an array of words
+        let wordArray = text.components(separatedBy: " ")
+
+        // Loop through the words
+        while index < wordArray.count {
+            // if a key word was found then ...
+            if wordArray[index] == "train" || wordArray[index] == "trains" || wordArray[index] == "exp" || wordArray[index] == "express" {
+                var backIndex = index - 1
                 
-                // Search rear half for the word " train"
-                searchResult = rearHalf.range(of: " train",
-                                              options: NSString.CompareOptions.literal,
-                                              range: rearHalf.startIndex..<rearHalf.endIndex,
-                                              locale: nil)
-                // If " train" was found then ...
-                if let range2 = searchResult {
-                    // Extract the substring
-                    let substring = rearHalf.substring(to: range2.lowerBound)
-                    // Parse rear half for train lines
-                    subwayLines = parseForSubwayLines(in: substring)
-                    // If found then ...
-                    if subwayLines.count > 0 {
-                        return subwayLines
+                // Work backwards to find the subway line
+                while backIndex >= 0 {
+                    var c: Character
+                    
+                    if wordArray[backIndex].characters.count == 2 && wordArray[backIndex].characters.last == "," {
+                        c = wordArray[backIndex].characters.first!
+                    } else if wordArray[backIndex].characters.count == 1 {
+                        c = wordArray[backIndex].characters.first!
+                        
+                    // If a word was found before the key word then ...
+                    } else if subwayLineSet.count == 0 {
+                        // terminate backward scan
+                        break
+
+                    // If the previous word was a subway line and ...
+                    } else if subwayLineSet.count == 1 {
+                        // the current word is some sort of conjunction then ...
+                        if wordArray[backIndex] == "and" || wordArray[backIndex] == "&amp;" {
+                            // continue with the backward scan
+                            backIndex -= 1
+                            continue
+                            
+                        // Otherwise, ...
+                        } else {
+                            // exit, scan has been completed
+                            return subwayLineSet
+                        }
+                    // Otherwise, ...
+                    } else {
+                        // exit, scan of comma delimited list completed
+                        return subwayLineSet
+                    }
+                    
+                    // If subway line was found then ...
+                    if isSubwayLine(c) {
+                        // add it to the set and ...
+                        subwayLineSet.insert(c)
+                        // continue with the backward scan
+                        backIndex -= 1
+
+                    // Otherwise, ...
+                    } else {
+                        // terminate backward scan
+                        break
                     }
                 }
             }
+            
+            index += 1
         }
         
-        return Set<Character>()
+        return subwayLineSet
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -407,13 +385,28 @@ class BackEnd {
     //////////////////////////////////////////////////////////////////////////////////////////
     private func processSubwayTweets(_ statusArray: [[String:Any]]) {
         var tweets = [Tweet]()
-        
+        var tweetId: Int64 = 0
+
         for tweetDictionary in statusArray {
-            let tweetDate: String = tweetDictionary["created_at"]! as! String
-            let tweetText: String = tweetDictionary["text"]! as! String
+            // Save the id of the first entry
+            if tweetId == 0 {
+                tweetId = tweetDictionary["id"]! as! Int64
+                lastSubwayTweetId = tweetId
+            }
+
+            // Get the text
+            let tweetText = tweetDictionary["text"]! as! String
+            
+            // If is not a response text then ...
             if !tweetText.hasPrefix("@") {
+                // Search text for subway lines
                 let subwayLines = parseSubway(tweetText: tweetText)
+                // If found then ...
                 if subwayLines.count > 0 {
+                    // Get the tweet date/time
+                    let tweetDate = tweetDictionary["created_at"]! as! String
+                    
+                    // Create an entry for each subway line found
                     for item in subwayLines {
                         let newTweet = Tweet(id: String(item), createdAt: tweetDate, tweetString: tweetText)
                         tweets.append(newTweet)
@@ -422,12 +415,11 @@ class BackEnd {
             }
         }
         
+        // Notify the delegate of all the applicable tweets found
         DispatchQueue.main.async {
             self.delegate?.didGetSubwayTweets(tweets)
         }
     }
-    
-    
 }
 
 
