@@ -11,11 +11,32 @@ import WebKit
 
 class SettingsViewController: UIViewController {
     
-    var lineString = String()
+    
+//    @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
+//        let tweetTVC = TweetTableViewController()
+//        
+//        if lineString.characters.count == 1 {
+//            tweetTVC.vcTitle = "Tweets for \(lineString)"
+//        } else {
+//            tweetTVC.vcTitle = "Tweets for \(lineString)"
+//        }
+//        
+//        UserDefaults.standard.setValue(selectedLinesDictionary, forKeyPath: "selectedLinesDictionary")
+//    }
+    
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         let tweetTVC = TweetTableViewController()
+        
+        if lineString.characters.count == 1 {
+            tweetTVC.vcTitle = "Tweets for \(lineString)"
+        } else {
+            tweetTVC.vcTitle = "Tweets for \(lineString)"
+        }
+        
         UserDefaults.standard.setValue(selectedLinesDictionary, forKeyPath: "selectedLinesDictionary")
+        self.navigationController?.pushViewController(tweetTVC, animated: true)
+        
     }
  
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
@@ -23,7 +44,7 @@ class SettingsViewController: UIViewController {
         
         selectedLinesDictionary[sender.description] = true
         // set border to show seleccted
-        sender.layer.cornerRadius =  sender.frame.size.width/2
+        sender.layer.cornerRadius =  sender.frame.width/2
         sender.layer.borderWidth = 3
         sender.layer.masksToBounds = true
         
@@ -34,8 +55,15 @@ class SettingsViewController: UIViewController {
 //            sender.layer.borderWidth = 0
 //        }
         
+        var key = String()
         
-        
+        //save to nsuserdefaults
+        key = tagDictionary[sender.tag]!
+        selectedLinesDictionary[key] = true
+        lineString += key
+        UserDefaults.standard.setValue(selectedLinesDictionary, forKeyPath: "selectedLinesDictionary")
+
+        print(key, selectedLinesDictionary[key]!, lineString)
         
     }
 
