@@ -16,37 +16,73 @@ var selectedLinesDictionary = [String : Bool]()
 
 class SettingsViewController: UIViewController {
     
-    var lineString = String()
+    @IBOutlet var subwayLineButtons: [UIButton]!
     
+    private let tagDictionary = [
+        1: "1",
+        2: "2",
+        3: "3",
+        4: "4",
+        5: "5",
+        6: "6",
+        7: "A",
+        8: "C",
+        9: "E",
+        10: "N",
+        11: "Q",
+        12: "R",
+        13: "B",
+        14: "D",
+        15: "F",
+        16: "M",
+        17: "J",
+        18: "Z",
+        19: "7",
+        20: "G",
+        21: "L",
+        22: "S",
+        23: "W"
+    ]
+
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         var lineString: String = ""
         
         let tweetTVC = TweetTableViewController()
-        UserDefaults.standard.setValue(selectedLinesDictionary, forKeyPath: "selectedLinesDictionary")
-//        tweetTVC.vcTitle = "Tweets for lines " + lineString
-        tweetTVC.navigationController?.title = "Tweets for lines " + lineString
+        
+        for (key, value) in selectedLinesDictionary {
+            if value {
+                lineString += key
+            }
+        }
+        
+        let title = lineString.characters.count > 1 ? String(Array(lineString.characters).sorted()) : lineString
+        
+        if title.characters.count > 0 {
+            tweetTVC.vcTitle = "Tweets for \(title)"
+        } else {
+            tweetTVC.vcTitle = "No Tweets"
+        }
+        
+        tweetTVC.navigationController?.navigationItem.title = "test"
         self.navigationController?.pushViewController(tweetTVC, animated: true)
     }
  
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
         
-        selectedLinesDictionary[sender.description] = true
-        // set border to show seleccted
-        sender.layer.cornerRadius =  sender.frame.size.width/2
-        sender.layer.borderWidth = 3
-        sender.layer.masksToBounds = true
+        // Translate the button tag to a subway line
+        let subwayLine = tagDictionary[sender.tag]!
         
-        //
-//        if(sender.isHighlighted) {
-//            sender.layer.borderColor = UIColor.green as! CGColor
-//        } else {
-//            sender.layer.borderWidth = 0
-//        }
-        lineString.append(tagDictionary[sender.tag]!)
-        print("lineString:", lineString)
-
-    
-        
+        // If the button is currently selected then ...
+        if selectedLinesDictionary[subwayLine]! {
+            // unselect it
+            selectedLinesDictionary[subwayLine] = false
+            disableBorder(on: sender)
+        // Otherwise, ...
+        } else {
+            // set the button to selected
+            selectedLinesDictionary[subwayLine] = true
+            enableBorder(on: sender)
+        }
         
         // Save the setting to UserDefaults
         let data = NSKeyedArchiver.archivedData(withRootObject: selectedLinesDictionary)

@@ -16,25 +16,22 @@ fileprivate var tweetDisplayIndexes = [Int]()
 class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
-//    @IBOutlet var tweetTableView: UITableView!
-    let tweetBackend = BackEnd.sharedInstance
-    var vcTitle = String()
-//    var currentTweet: Tweet? = nil
+    @IBOutlet var tweetTableView: UITableView!
+    var vcTitle = ""
+    var currentTweet: Tweet? = nil
     
     private let backend = BackEnd.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backend.delegate = self
-        backend.getAccessToken()
-        
-        self.navigationController?.title = vcTitle
+        self.navigationItem.title = vcTitle
         
         // register custom cell class
-//        self.tweetTableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-
+        tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        backend.delegate = self
+        backend.getAccessToken()
     }
     
     
