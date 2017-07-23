@@ -291,13 +291,14 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" style="plain" id="3vd-pq-LTk">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="BYZ-38-t0r" id="r64-2W-ipP"/>
+                                <segue destination="xOY-vt-O8h" kind="show" id="E6Y-mD-ojU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.600000000000001" y="32.833583208395808"/>
+            <point key="canvasLocation" x="44" y="25"/>
         </scene>
         <!--Tweets for-->
         <scene sceneID="iBw-pn-PoR">
@@ -324,12 +325,41 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Tweets for" id="5Jm-Ob-cqM"/>
                     <connections>
-                        <outlet property="tweetTableView" destination="UtY-5H-lFc" id="vgT-Mp-PUI"/>
+                        <outlet property="tweetTableView" destination="UtY-5H-lFc" id="eMh-QJ-Rol"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TbE-qk-ws7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807.20000000000005" y="24.7376311844078"/>
+            <point key="canvasLocation" x="777" y="-413"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Fzt-ff-f23">
+            <objects>
+                <tableViewController id="xOY-vt-O8h" customClass="TweetTableViewController" customModule="MetroTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" id="2ra-Av-JXN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="180" id="OBw-sC-b5j">
+                                <rect key="frame" x="0.0" y="28" width="375" height="180"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OBw-sC-b5j" id="JNf-2f-RWj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xOY-vt-O8h" id="0cD-DQ-aAK"/>
+                            <outlet property="delegate" destination="xOY-vt-O8h" id="73L-ry-Hnx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="PvL-TI-GEd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wSe-W2-2Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="25.637181409295355"/>
         </scene>
     </scenes>
     <resources>

@@ -1,4 +1,4 @@
-//
+
 //  TweetTableViewController.swift
 //  MetroTweet
 //
@@ -12,10 +12,10 @@ import UIKit
 class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
-    @IBOutlet var tweetTableView: UITableView!
+//    @IBOutlet var tweetTableView: UITableView!
     let tweetBackend = BackEnd.sharedInstance
-    var vcTitle = ""
-    var currentTweet: Tweet? = nil
+    var vcTitle = String()
+//    var currentTweet: Tweet? = nil
     
     private let backend = BackEnd.sharedInstance
     private var tweetDisplayIndexes = [Int]()
@@ -26,10 +26,12 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         backend.delegate = self
         backend.getAccessToken()
         
-        self.navigationItem.title = vcTitle
+        self.navigationController?.title = vcTitle
         
         // register custom cell class
-        tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+//        self.tweetTableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+
     }
     
     
@@ -48,24 +50,27 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     func didGetSubwayTweets(_ tweets: [Tweet]) {
-        if tweetCache.count > 0 {
-            tweetCache.insert(contentsOf: tweets, at: 0)
-        } else {
-            tweetCache.append(contentsOf: tweets)
+        if tweets.count > 0 {
+            if tweetCache.count > 0 {
+                tweetCache.insert(contentsOf: tweets, at: 0)
+            } else {
+                tweetCache.append(contentsOf: tweets)
+            }
         }
         
         // purge cache of old tweets
         
         // create tweetDisplayIndexArray
         for (index, tweet) in tweetCache.enumerated() {
-            print(tweet.id)
             if selectedLinesDictionary[tweet.id]!  {
                 tweetDisplayIndexes.append(index)
             }
         }
         
         // update table view
-        tweetTableView.reloadData()
+//        tweetTableView.reloadData()
+        tableView.reloadData()
+
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////
