@@ -43,7 +43,7 @@ class SettingsViewController: UIViewController {
         23: "W"
     ]
 
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
+    @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         var lineString: String = ""
         
         let tweetTVC = TweetTableViewController()
@@ -62,9 +62,33 @@ class SettingsViewController: UIViewController {
             tweetTVC.vcTitle = "No Tweets"
         }
         
-        tweetTVC.navigationController?.navigationItem.title = "test"
+//        tweetTVC.navigationItem.title = "test"
         self.navigationController?.pushViewController(tweetTVC, animated: true)
     }
+    
+    
+//    @IBAction func nextButtonTapped(_ sender: UIButton) {
+//        var lineString: String = ""
+//        
+//        let tweetTVC = TweetTableViewController()
+//        
+//        for (key, value) in selectedLinesDictionary {
+//            if value {
+//                lineString += key
+//            }
+//        }
+//        
+//        let title = lineString.characters.count > 1 ? String(Array(lineString.characters).sorted()) : lineString
+//        
+//        if title.characters.count > 0 {
+//            tweetTVC.vcTitle = "Tweets for \(title)"
+//        } else {
+//            tweetTVC.vcTitle = "No Tweets"
+//        }
+//        
+//        tweetTVC.navigationController?.navigationItem.title = "test"
+//        self.navigationController?.pushViewController(tweetTVC, animated: true)
+//    }
  
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
         

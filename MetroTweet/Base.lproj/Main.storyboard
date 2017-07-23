@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZMY-De-duF"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qkf-UE-o7V"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v86-Jx-MP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,10 +263,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GoS-tc-vIG">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="3vd-pq-LTk">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="7tj-Nd-Xbx">
                             <connections>
-                                <action selector="nextButtonTapped:" destination="BYZ-38-t0r" id="r64-2W-ipP"/>
-                                <segue destination="xOY-vt-O8h" kind="show" id="E6Y-mD-ojU"/>
+                                <action selector="nextButtonTapped:" destination="BYZ-38-t0r" id="Ueo-U5-pWj"/>
+                                <segue destination="xOY-vt-O8h" kind="show" id="JQY-gb-zSm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -324,6 +324,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="PvL-TI-GEd"/>
+                    <connections>
+                        <outlet property="tweetTableView" destination="2ra-Av-JXN" id="2t5-oO-C4P"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSe-W2-2Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

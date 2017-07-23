@@ -23,7 +23,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         super.viewDidLoad()
         
         self.navigationItem.title = vcTitle
-        
+        print(vcTitle)
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
