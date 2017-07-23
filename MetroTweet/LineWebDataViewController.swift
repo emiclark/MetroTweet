@@ -16,12 +16,16 @@ class LineWebDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let request = URLRequest(url: url!)
+        
+        // Align the top of the controller to the bottom of navigation bar rather
+        // than to the top of the screen.
+        edgesForExtendedLayout = []
+        
         let webView = WKWebView(frame: view.frame)
-        view.addSubview(webView)
+        view = webView
+
+        let request = URLRequest(url: url!)
         webView.load(request)
-        
-        
     }
     
 
