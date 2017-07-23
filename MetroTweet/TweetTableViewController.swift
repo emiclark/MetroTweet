@@ -35,6 +35,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     }
     
     
+    
     //////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Delegate method called when we successfully received an access token from Twitter.
@@ -125,7 +126,8 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         //        let frame = tweetTableView.frame
         
         // create button
-        let button = UIButton(frame: CGRect(x: 120 , y: 15, width: 200, height: 30))
+        let xcoord = (self.view.frame.size.width - 200)/2;
+        let button = UIButton(frame: CGRect(x: xcoord , y: 15, width: 200, height: 30))
         button.addTarget(self, action: #selector(updateTweet), for: .touchUpInside)
         button.setTitle("Update Tweets", for: .normal)
         button.backgroundColor = .blue
