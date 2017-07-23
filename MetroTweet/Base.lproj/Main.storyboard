@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gok-fx-Ibv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gok-fx-Ibv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -295,6 +295,31 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outletCollection property="subwayLineButtons" destination="6fI-cI-yOg" collectionClass="NSMutableArray" id="iIb-jl-OwC"/>
+                        <outletCollection property="subwayLineButtons" destination="SS0-3z-we8" collectionClass="NSMutableArray" id="1Xq-xu-Fef"/>
+                        <outletCollection property="subwayLineButtons" destination="IUp-zx-eZQ" collectionClass="NSMutableArray" id="G6a-p7-xku"/>
+                        <outletCollection property="subwayLineButtons" destination="uTK-uM-Z8n" collectionClass="NSMutableArray" id="c1s-8C-E5h"/>
+                        <outletCollection property="subwayLineButtons" destination="E5N-8z-NMw" collectionClass="NSMutableArray" id="FDN-o1-kfN"/>
+                        <outletCollection property="subwayLineButtons" destination="JmO-al-RoI" collectionClass="NSMutableArray" id="6sM-ub-ZJ5"/>
+                        <outletCollection property="subwayLineButtons" destination="sxo-o7-RKy" collectionClass="NSMutableArray" id="LqR-W2-Ubw"/>
+                        <outletCollection property="subwayLineButtons" destination="Ybx-Tv-FRg" collectionClass="NSMutableArray" id="rbK-e2-DLY"/>
+                        <outletCollection property="subwayLineButtons" destination="Baa-dg-ECn" collectionClass="NSMutableArray" id="Kgq-8z-cIf"/>
+                        <outletCollection property="subwayLineButtons" destination="ndq-YL-NdH" collectionClass="NSMutableArray" id="5Yy-LH-SFR"/>
+                        <outletCollection property="subwayLineButtons" destination="54R-nZ-PMd" collectionClass="NSMutableArray" id="Ofe-S5-Jxf"/>
+                        <outletCollection property="subwayLineButtons" destination="5Ti-iX-mke" collectionClass="NSMutableArray" id="Emt-8S-9Fg"/>
+                        <outletCollection property="subwayLineButtons" destination="q4R-3X-6Pw" collectionClass="NSMutableArray" id="gqu-Wj-VVb"/>
+                        <outletCollection property="subwayLineButtons" destination="8JE-0W-72t" collectionClass="NSMutableArray" id="HDJ-DB-iv4"/>
+                        <outletCollection property="subwayLineButtons" destination="qdl-Yf-0a0" collectionClass="NSMutableArray" id="z7Q-xg-av5"/>
+                        <outletCollection property="subwayLineButtons" destination="o0J-A2-OHJ" collectionClass="NSMutableArray" id="8zE-7y-NlX"/>
+                        <outletCollection property="subwayLineButtons" destination="dt3-Cg-kVo" collectionClass="NSMutableArray" id="8ww-KX-wH4"/>
+                        <outletCollection property="subwayLineButtons" destination="9bx-I8-T1p" collectionClass="NSMutableArray" id="Hd9-Bu-KZz"/>
+                        <outletCollection property="subwayLineButtons" destination="7gS-xs-Kad" collectionClass="NSMutableArray" id="k3x-sa-vYZ"/>
+                        <outletCollection property="subwayLineButtons" destination="6Az-LH-iAc" collectionClass="NSMutableArray" id="gzi-NW-hzI"/>
+                        <outletCollection property="subwayLineButtons" destination="epf-VW-Obs" collectionClass="NSMutableArray" id="hF5-B3-dy3"/>
+                        <outletCollection property="subwayLineButtons" destination="ro1-7Y-84m" collectionClass="NSMutableArray" id="LUu-JS-saE"/>
+                        <outletCollection property="subwayLineButtons" destination="wuK-Fq-8ca" collectionClass="NSMutableArray" id="Z8d-oM-ZrI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,7 +338,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ki9-j7-gI5" id="ZFY-xx-ZwD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

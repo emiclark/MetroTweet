@@ -9,6 +9,10 @@
 import UIKit
 
 
+fileprivate var tweetCache = [Tweet]()
+fileprivate var tweetDisplayIndexes = [Int]()
+
+
 class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
@@ -18,7 +22,6 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
 //    var currentTweet: Tweet? = nil
     
     private let backend = BackEnd.sharedInstance
-    private var tweetDisplayIndexes = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +63,8 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         
         // purge cache of old tweets
         
-        // create tweetDisplayIndexArray
+        // Refresh the tweetDisplayIndexArray
+        tweetDisplayIndexes.removeAll()
         for (index, tweet) in tweetCache.enumerated() {
             if selectedLinesDictionary[tweet.id]!  {
                 tweetDisplayIndexes.append(index)
