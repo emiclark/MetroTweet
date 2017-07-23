@@ -38,8 +38,6 @@ class BackEnd {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     public func getAccessToken() {
-        var errorMsg: String? = nil
-        
         // If have accessToken already then ...
         if accessToken != nil {
             // Inform delegate that we have a token
@@ -70,6 +68,8 @@ class BackEnd {
         
         // Execute the request in the background
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            var errorMsg = ""
+            
             // If there was a connectivity issues then ...
             if let error = error {
                 errorMsg = "Connectivity error: \(error.localizedDescription)."
@@ -116,16 +116,18 @@ class BackEnd {
                     } catch {
                         errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
+                    
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
                 }
+                
             } else {
                 errorMsg = "Received an unknown response from Twitter"
             }
             
             // Notify the delegate of the error.
             DispatchQueue.main.async {
-                self.delegate?.failedToGetAccessToken(errorMsg!)
+                self.delegate?.failedToGetAccessToken(errorMsg)
             }
         })
         
@@ -211,7 +213,6 @@ class BackEnd {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     public func getSubwayTweets() {
-        var errorMsg: String? = nil
         var urlStr: String
         
         // create the request
@@ -230,6 +231,8 @@ class BackEnd {
         
         // Execute the request in the background
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            var errorMsg = ""
+
             // If there was a connectivity issues then ...
             if let error = error {
                 errorMsg = "Connectivity error: \(error.localizedDescription)."
@@ -251,6 +254,7 @@ class BackEnd {
                     } catch {
                         errorMsg = "[200] Error deserializing JSON: \(error.localizedDescription)."
                     }
+                    
                 case 401, 403:
                     do {
                         if let data = data,
@@ -268,16 +272,18 @@ class BackEnd {
                     } catch {
                         errorMsg = "[\(httpResponse.statusCode)] Error deserializing JSON: \(error.localizedDescription)."
                     }
+                    
                 default:
                     errorMsg = "Twitter returned status code: \(httpResponse.statusCode)."
                 }
+
             } else {
                 errorMsg = "Received an unknown response from Twitter."
             }
             
             // Notify the delegate of the error.
             DispatchQueue.main.async {
-                self.delegate?.failedToGetSubwayTweets(errorMsg!)
+                self.delegate?.failedToGetSubwayTweets(errorMsg)
             }
         })
         
@@ -300,10 +306,7 @@ class BackEnd {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     private func isSubwayLine(_ c: Character) -> Bool {
-        let subwayLineSet = Set<Character>(["1", "2", "3", "4", "5", "6", "7", "A", "B",
-                                            "C", "D", "E", "F", "G", "J", "L", "M", "N",
-                                            "Q", "R", "S", "W", "Z"])
-        return subwayLineSet.contains(c)
+        return getImageName(for: String(c)) != nil
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
