@@ -147,8 +147,19 @@ class SettingsViewController: UIViewController {
     }
 
     private func enableBorder(on button: UIButton) {
+        
+        let myBorderColor = UIColor (
+            red:    45/255.0,
+            green:  190/255.0,
+            blue:   10/255.0,
+            alpha:  1.0 ).cgColor
+        
+
+
+        
         button.layer.cornerRadius =  button.frame.width / 2
-        button.layer.borderWidth = 3
+        button.layer.borderWidth = 6
+        button.layer.borderColor = myBorderColor
         button.layer.masksToBounds = true
     }
     

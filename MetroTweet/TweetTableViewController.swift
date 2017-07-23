@@ -12,15 +12,12 @@ import UIKit
 fileprivate var tweetCache = [Tweet]()
 fileprivate var tweetDisplayIndexes = [Int]()
 
-
 class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
     @IBOutlet var tweetTableView: UITableView!
-    var vcTitle = ""
-    var currentTweet: Tweet? = nil
-    
     private let backend = BackEnd.sharedInstance
+    var vcTitle = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +26,14 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+
         
         backend.delegate = self
         backend.getAccessToken()
+
     }
     
+
     
     
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +70,6 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         }
         
         // update table view
-//        tweetTableView.reloadData()
         tableView.reloadData()
 
     }
@@ -110,10 +109,6 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-//    func UpdateButtonTapped(_ sender: UIButton) {
-//        backend.getSubwayTweets()
-//    }
-    
     // MARK: - Table view Header
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -123,22 +118,35 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        //        let frame = tweetTableView.frame
+        let mybuttonColor = UIColor(
+            red:0.3,
+            green:0.6,
+            blue:0.9,
+            alpha:1.0)
+        
+        let myheaderBgColor = UIColor(
+            red:0.92,
+            green:0.92,
+            blue:0.92,
+            alpha:1.0)
         
         // create button
         let xcoord = (self.view.frame.size.width - 200)/2;
-        let button = UIButton(frame: CGRect(x: xcoord , y: 15, width: 200, height: 30))
-        button.addTarget(self, action: #selector(updateTweet), for: .touchUpInside)
-        button.setTitle("Update Tweets", for: .normal)
-        button.backgroundColor = .blue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.white, for: .normal)
+        let updateButton = UIButton(frame: CGRect(x: xcoord , y: 15, width: 200, height: 30))
+        updateButton.addTarget(self, action: #selector(updateTweet), for: .touchUpInside)
+        updateButton.setTitle("Update Tweets", for: .normal)
+        updateButton.backgroundColor = mybuttonColor
+        updateButton.translatesAutoresizingMaskIntoConstraints = false
+        updateButton.setTitleColor(.white, for: .normal)
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 60))
-        headerView.backgroundColor = .lightGray
-        headerView.addSubview(button)   // add the button to the view
+        headerView.backgroundColor = myheaderBgColor
+        headerView.addSubview(updateButton)   // add the button to the view
         
         return headerView
     }
+    
+    
+    
     
     func updateTweet() {
         backend.getSubwayTweets()
