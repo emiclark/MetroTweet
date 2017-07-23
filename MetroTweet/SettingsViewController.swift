@@ -100,47 +100,46 @@ class SettingsViewController: UIViewController {
 
             // Read it in
             selectedLinesDictionary = unarchivedDictionary
-
-            // Loop through all on the buttons
-            for button in subwayLineButtons {
-                // Translate the button tag to a subway line
-                let subwayLine = tagDictionary[button.tag]
-                
-                // If the subway line has been selected by the user then ...
-                if selectedLinesDictionary[subwayLine!]! {
-                    // display a border around the current button
-                    enableBorder(on: button)
-                }
-            }
-            
-            return
+        // Otherwise, ...
+        } else {
+            // default to all subway line selected
+            selectedLinesDictionary = [
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "A": true,
+                "C": true,
+                "E": true,
+                "N": true,
+                "Q": true,
+                "R": true,
+                "B": true,
+                "D": true,
+                "F": true,
+                "M": true,
+                "J": true,
+                "Z": true,
+                "7": true,
+                "G": true,
+                "L": true,
+                "S": true,
+                "W": true  ]
         }
         
-        selectedLinesDictionary = [
-            "1": false,
-            "2": false,
-            "3": false,
-            "4": false,
-            "5": false,
-            "6": false,
-            "A": false,
-            "C": false,
-            "E": false,
-            "N": false,
-            "Q": false,
-            "R": false,
-            "B": false,
-            "D": false,
-            "F": false,
-            "M": false,
-            "J": false,
-            "Z": false,
-            "7": false,
-            "G": false,
-            "L": false,
-            "S": false,
-            "W": false  ]
-        
+        // Loop through all on the buttons
+        for button in subwayLineButtons {
+            // Translate the button tag to a subway line
+            let subwayLine = tagDictionary[button.tag]
+            
+            // If the subway line has been selected by the user then ...
+            if selectedLinesDictionary[subwayLine!]! {
+                // display a border around the current button
+                enableBorder(on: button)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
