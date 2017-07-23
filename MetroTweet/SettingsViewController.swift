@@ -178,9 +178,6 @@ class SettingsViewController: UIViewController {
             blue:   10/255.0,
             alpha:  1.0 ).cgColor
         
-
-
-        
         button.layer.cornerRadius =  button.frame.width / 2
         button.layer.borderWidth = 6
         button.layer.borderColor = myBorderColor

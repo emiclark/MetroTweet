@@ -263,6 +263,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GoS-tc-vIG">
+                        <barButtonItem key="backBarButtonItem" title="Settings" id="qJI-Bb-5d4"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="7tj-Nd-Xbx">
                             <connections>
                                 <action selector="nextButtonTapped:" destination="BYZ-38-t0r" id="Ueo-U5-pWj"/>
