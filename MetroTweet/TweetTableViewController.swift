@@ -47,6 +47,18 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Refresh the tweetDisplayIndexArray
+        tweetDisplayIndexes.removeAll()
+        for (index, tweet) in tweetCache.enumerated() {
+            if selectedLinesDictionary[tweet.id]!  {
+                tweetDisplayIndexes.append(index)
+            }
+        }
+        tableView.reloadData()
+    }
+    
 
     
     
@@ -79,8 +91,6 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
                 tweetCache.append(contentsOf: tweets)
             }
         }
-        updatedLabel.text = "Updated \(strDate)."
-        
         
         // purge cache of old tweets
         
@@ -92,6 +102,12 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
             }
         }
         
+        if tweetDisplayIndexes.count > 0 {
+            updatedLabel.text = "Updated \(strDate)."
+        } else {
+            updatedLabel.text = "Updated \(strDate). No new tweets."
+        }
+
         // update table view
         tableView.reloadData()
 
@@ -175,14 +191,6 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     func updateTweet() {
         backend.getSubwayTweets()
-
-        // display date & time of update in updateLabel
-        TimeZone.ReferenceType.default = TimeZone(abbreviation: "EST")!
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone.ReferenceType.default
-        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
-        let strDate = formatter.string(from: Date())
-        updatedLabel.text = "Updated at \(strDate)."
     }
     
     // MARK: - Table view data source
