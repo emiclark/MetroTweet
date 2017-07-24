@@ -16,18 +16,31 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     
     @IBOutlet var tweetTableView: UITableView!
+    
+    let updatedLabel: UILabel = {
+        let ul = UILabel(frame: CGRect(x: 87.5 , y: 55, width: 375, height: 15))
+        ul.text = "Click on the Update button to get tweets"
+        ul.translatesAutoresizingMaskIntoConstraints = false
+        ul.textAlignment = .center
+        ul.numberOfLines = 0
+        ul.textColor = UIColor.darkGray
+        ul.font=UIFont.systemFont(ofSize: 12)
+        return ul
+    }()
+
     private let backend = BackEnd.sharedInstance
     var vcTitle = String()
+    var labelTitle = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = vcTitle
-        print(vcTitle)
+        updatedLabel.text = labelTitle
+        
         // register custom cell class
         tableView.register(UINib(nibName: "TweetTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
-        
         backend.delegate = self
         backend.getAccessToken()
 
@@ -112,7 +125,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     // MARK: - Table view Header
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(60)
+        return CGFloat(100)
     }
     
     
@@ -138,9 +151,12 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         updateButton.backgroundColor = mybuttonColor
         updateButton.translatesAutoresizingMaskIntoConstraints = false
         updateButton.setTitleColor(.white, for: .normal)
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 60))
+
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 100))
         headerView.backgroundColor = myheaderBgColor
         headerView.addSubview(updateButton)   // add the button to the view
+        headerView.addSubview(updatedLabel)
+        updatedLabel.center.x = self.view.center.x
         
         return headerView
     }
@@ -150,7 +166,14 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     
     func updateTweet() {
         backend.getSubwayTweets()
-        print("updateTweet")
+        updatedLabel.text = "Last updated \(Date())"
+        if tweetCache.count == 0 {
+            // display text that there are no new tweets for the lines selected
+            let labelText = "Last updated \(Date())" + "\nNo new tweets for the lines selected"
+            updatedLabel.numberOfLines = 0
+            updatedLabel.text = labelText
+            print("no new tweets")
+        }
     }
     
     // MARK: - Table view data source

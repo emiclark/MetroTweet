@@ -61,6 +61,9 @@ class SettingsViewController: UIViewController {
         } else {
             tweetTVC.vcTitle = "No Selection Made"
         }
+        tweetTVC.labelTitle = "Click on the Update button to get tweets"
+        
+
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
