@@ -21,6 +21,7 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
         let ul = UILabel(frame: CGRect(x: 87.5 , y: 55, width: 375, height: 15))
         ul.text = "Click on the Update button to get tweets"
         ul.translatesAutoresizingMaskIntoConstraints = false
+        ul.lineBreakMode = .byWordWrapping
         ul.textAlignment = .center
         ul.numberOfLines = 0
         ul.textColor = UIColor.darkGray
@@ -64,6 +65,13 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
     //
     //////////////////////////////////////////////////////////////////////////////////////////
     func didGetSubwayTweets(_ tweets: [Tweet]) {
+        // format date/time for updateLabel
+        TimeZone.ReferenceType.default = TimeZone(abbreviation: "EST")!
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.ReferenceType.default
+        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
+        let strDate = formatter.string(from: Date())
+     
         if tweets.count > 0 {
             if tweetCache.count > 0 {
                 tweetCache.insert(contentsOf: tweets, at: 0)
@@ -71,6 +79,8 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
                 tweetCache.append(contentsOf: tweets)
             }
         }
+        updatedLabel.text = "Updated \(strDate)."
+        
         
         // purge cache of old tweets
         
@@ -154,26 +164,25 @@ class TweetTableViewController: UITableViewController, BackEndDelegate {
 
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 100))
         headerView.backgroundColor = myheaderBgColor
+        updatedLabel.center.x = self.view.center.x
+
         headerView.addSubview(updateButton)   // add the button to the view
         headerView.addSubview(updatedLabel)
-        updatedLabel.center.x = self.view.center.x
         
         return headerView
     }
     
     
-    
-    
     func updateTweet() {
         backend.getSubwayTweets()
-        updatedLabel.text = "Last updated \(Date())"
-        if tweetCache.count == 0 {
-            // display text that there are no new tweets for the lines selected
-            let labelText = "Last updated \(Date())" + "\nNo new tweets for the lines selected"
-            updatedLabel.numberOfLines = 0
-            updatedLabel.text = labelText
-            print("no new tweets")
-        }
+
+        // display date & time of update in updateLabel
+        TimeZone.ReferenceType.default = TimeZone(abbreviation: "EST")!
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.ReferenceType.default
+        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
+        let strDate = formatter.string(from: Date())
+        updatedLabel.text = "Updated at \(strDate)."
     }
     
     // MARK: - Table view data source
